@@ -1,17 +1,21 @@
 from PIL import Image
 import random
-import os 
+import os
 
+#to make sure that the input has .format extentions
 VALID_EXTENSIONS = ['.png', '.jpg', '.jpeg']
+
+def add_default_extension(output_path):
+    if not any(output_path.lower().endswith(ext) for ext in VALID_EXTENSIONS):
+        output_path += '.png'
+    return output_path
 
 def encrypt_image(image_path, output_path, key):
     # Check if image file exists
     if not os.path.isfile(image_path):
         raise FileNotFoundError(f"No such file: '{image_path}'")
-
     # Check for valid output extension
-    if not any(output_path.lower().endswith(ext) for ext in VALID_EXTENSIONS):
-        raise ValueError(f"Invalid file extension for output path: {output_path}. Must be one of {VALID_EXTENSIONS}")
+    output_path = add_default_extension(output_path)
 
     # Open the image
     image = Image.open(image_path)
