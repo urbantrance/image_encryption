@@ -67,6 +67,7 @@ def main():
     while True:
         action = input("Do you want to (E)ncrypt or (D)ecrypt and (Q) to quit: ").upper()
         if action == 'Q':
+            print("Thanks for using lazy hunter's image encrypt tool")
             break
         elif action not in ['E', 'D']:
             print("Please enter either E to encrypt or D to decrypt or Q to quit ")
@@ -80,8 +81,6 @@ def main():
             encrypt_image(image_path, output_path, key)
         elif action == 'D':
             decrypt_image(image_path, output_path, key)
-
-print("Thanks for using onochie image encrypt")
 
 if __name__ == "__main__":
     main()
